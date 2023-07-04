@@ -1,0 +1,24 @@
+name: Let's build a Helm Secret
+
+on:
+  workflow_dispatch:
+  
+env:
+  HS_REPO: https://github.com/jkroepke/helm-secrets.git
+  WORKDIR: hs
+  BUILDDIR: build
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+
+    - name: Check it out
+      run: git clone ${{ env.ST_GIT }} ${{ env.WORKDIR }}
+
+    - name: Docker-build it
+      working-directory: ${{ env.WORKDIR }}/${{ env.BUILDDIR }}
+      run: |
+        docker build .
+        ls -lh
