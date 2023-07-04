@@ -19,6 +19,7 @@ jobs:
     - name: Docker-build it
       working-directory: ${{ env.WORKDIR }}
       run: |
-        echo ${{ secrets.DOCKERHUB }} | docker login -u qrkot --password-stdin
+        echo ${{ secrets.DOCKERHUB }} | docker login -u ${{ secrets.DOCKERHUB_USER }} --password-stdin
         docker build -t qrkot/helmsec-bundle:latest .
+        docker push ${{ secrets.DOCKERHUB_USER }}/helmsec-bundle
         docker logout
