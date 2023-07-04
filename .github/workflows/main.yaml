@@ -6,7 +6,6 @@ on:
 env:
   HS_REPO: https://github.com/jkroepke/helm-secrets.git
   WORKDIR: hs
-  BUILDDIR: build
   
 jobs:
   build:
@@ -15,10 +14,10 @@ jobs:
     steps:
 
     - name: Check it out
-      run: git clone ${{ env.ST_GIT }} ${{ env.WORKDIR }}
+      run: git clone ${{ env.HS_REPO }} ${{ env.WORKDIR }}
 
     - name: Docker-build it
-      working-directory: ${{ env.WORKDIR }}/${{ env.BUILDDIR }}
+      working-directory: ${{ env.WORKDIR }}
       run: |
         docker build .
         ls -lh
