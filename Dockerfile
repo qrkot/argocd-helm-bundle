@@ -5,7 +5,7 @@ ARG HS_DIR=helmsec
 
 ENV HOME=/home/user/
 
-RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing sops age kubectl \
+RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing sops age kubectl helm \
    && adduser -D user
  
 COPY ./${HS_DIR}/scripts/ /home/user/.local/share/helm/plugins/helm-plugins/scripts/
