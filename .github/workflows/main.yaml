@@ -23,8 +23,7 @@ jobs:
 
     - name: Docker-build it
       run: |
-        docker build .
-#        echo ${{ secrets.DOCKERHUB }} | docker login -u ${{ secrets.DOCKERHUB_USER }} --password-stdin
-#        docker build -t qrkot/helmsec-bundle:latest .
-#        docker push ${{ secrets.DOCKERHUB_USER }}/helmsec-bundle
-#       docker logout
+        echo ${{ secrets.DOCKERHUB }} | docker login -u ${{ secrets.DOCKERHUB_USER }} --password-stdin
+        docker build -t qrkot/helmsec-bundle:latest .
+        docker push ${{ secrets.DOCKERHUB_USER }}/helmsec-bundle
+        docker logout
