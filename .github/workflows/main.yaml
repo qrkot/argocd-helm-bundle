@@ -24,6 +24,6 @@ jobs:
     - name: Docker-build it
       run: |
         echo ${{ secrets.DOCKERHUB }} | docker login -u ${{ secrets.DOCKERHUB_USER }} --password-stdin
-        docker build -t qrkot/helmsec-bundle:latest -t qrkot/helmsec-bundle:${{ GITHUB_SHA }} .
+        docker build -t qrkot/helmsec-bundle:latest -t qrkot/helmsec-bundle:${{ github.GITHUB_SHA }} .
         docker push ${{ secrets.DOCKERHUB_USER }}/helmsec-bundle
         docker logout
